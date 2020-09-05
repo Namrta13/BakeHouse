@@ -1,0 +1,38 @@
+
+    <div class="card-style">
+        <img src="{{itemdetail.image}}" width="400px" height="400px">
+        <button mat-fab disabled class="icon-style"><mat-icon>favorite</mat-icon></button>
+        <div class="stars-container">
+        <bar-rating [(rate)]="cssRate" [max]="5"></bar-rating>
+        </div>
+        <div class="button-style">
+            <button mat-raised-button color="warn"><mat-icon>flash_on</mat-icon>Buy Now</button> | <button mat-raised-button color="warn" (click)="additemToCart(itemdetail)" *ngIf="!inCart"><mat-icon>add_shopping_cart</mat-icon>Add To Cart</button> <button mat-raised-button color="warn" *ngIf="inCart" (click)="removeItem(itemdetail.name)"><mat-icon>remove_shopping_cart</mat-icon>Remove From Cart</button>
+        </div>
+    </div>
+  <!--  <div class="card-class"> -->
+        <div class="carousel-wrapper">
+            <h2>{{itemdetail.name}}</h2>
+            <hr>
+            <div class="up">
+                <div class="discount-val" *ngIf="itemdetail.discount">
+                    <h2>{{sellingPrice | currency:"INR":"symbol"}}</h2>  <s><h3>{{itemdetail.cost | currency:"INR":"symbol"}}</h3></s> 
+                </div>
+                <div class="discount-val" *ngIf="!itemdetail.discount">
+                    <h2>{{itemdetail.cost | currency:"INR":"symbol"}}</h2>
+                </div>
+                </div>
+                <div class="down">   
+                <mat-list>
+                 <mat-list-item><label style="padding-right: 20px">Quantity:</label> <button mat-stroked-button class="button-hightlight" color="primary" *ngFor="let weight of itemdetail.weights;let i = index" (click)="getWeight(weight)">{{weight}}</button> <select *ngIf="!itemdetail.weights" id="quantity" [(ngModel)]="selectedVal">
+                     <option value="1">1</option>
+                     <option value="2">2</option>
+                     <option value="3">3</option>
+                     <option value="4">4</option>
+                     <option value="5">5</option>
+                 </select></mat-list-item>
+                 <mat-list-item><label style="padding-bottom: 20px">Description:</label></mat-list-item>
+                 <mat-list-item>{{itemdetail.description}}</mat-list-item>
+                </mat-list>
+            </div> 
+           </div>
+    <!--</div>-->

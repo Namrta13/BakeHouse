@@ -1,0 +1,90 @@
+ <div *ngIf="visible == reset || visible == forget" class="container">
+    <div class="main">
+        <div class="image-type">
+            <img src="../../assets/img/background.jpg">
+        </div>
+       <div class="text-box">
+       <h1 class="heading-style-main"><b>Welcome</b></h1>
+       <h2 class="heading-style-second"><b>To</b></h2>
+       <h3 class="heading-style-third"><b>Bake House</b></h3>
+       </div>
+       <div class="button-group">
+        <button mat-raised-button class="button-one" (click)="openLoginDiv()"><span class="glyphicon glyphicon-log-in" style="font-size: 1em; margin-right:10px"></span>Login</button>  
+        <button mat-raised-button class="button-two" (click)="openSignUpDiv()"><span class="glyphicon glyphicon-user" style="font-size: 1em; margin-right:10px"></span>Sign Up</button>
+       </div>
+    </div>
+    <div class="overlay">
+        <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
+            <h1 class="heading-style">Login</h1>
+            <mat-form-field>
+                <mat-label>Username/Email</mat-label>
+                <input matInput type="email" id="email-login" name="email-login" class="form-control" ngModel required>
+                <mat-icon matPrefix style="width: 1.5em;">email</mat-icon>
+              </mat-form-field>
+              <br/>
+              <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" id="password-login" name="password-login" class="form-control" ngModel required>
+                <mat-icon matPrefix style="width: 1.5em;">lock</mat-icon>
+              </mat-form-field>
+              <br/>
+              <button mat-raised-button color="primary" type="submit" class="login" [disabled]="!loginForm.valid">Login</button>
+        </form>
+        <div class="para-style">
+            <a routerLink="reset" (click)="resetPass()"><p>Reset Password</p></a>
+            <a routerLink="forget" (click)="forgetPass()"><p>Forgot Password?</p></a>
+            <button mat-raised-button color="accent" class="login" (click)="backToMain()">Back</button>
+         </div>
+    </div>
+    <div class="overlay-signup">
+            <form (ngSubmit)="onSignUp(signForm)" #signForm="ngForm" class="form">
+              <h1 class="heading-style">Sign Up</h1>
+              <div style="width: 400px; display: inline-block;">
+               <mat-form-field style="width: 200px;"> 
+                <mat-label>First Name</mat-label>
+                <input matInput type="text" id="firstname" name="firstname" class="form-control" ngModel required>
+                <mat-icon matPrefix style="width: 1.5em;">person</mat-icon>
+               </mat-form-field>
+               <mat-form-field style="width: 200px;">
+                <mat-label>Last Name</mat-label>
+                <input matInput type="text" id="lastname" name="lastname" class="form-control" ngModel>
+                <mat-icon matPrefix style="width: 1.5em;">person</mat-icon>
+               </mat-form-field>
+              </div>
+              <br/>
+              <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input matInput type="text" id="username" name="username" class="form-control" ngModel required>
+                <mat-icon matPrefix style="width: 1.5em;">people</mat-icon>
+              </mat-form-field>
+              <br/>
+              <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="email" id="email" name="email" class="form-control" ngModel required>
+                <mat-icon matPrefix style="width: 1.5em;">email</mat-icon>
+              </mat-form-field>
+              <br/>
+              <mat-form-field>
+                <mat-label>Phone Number</mat-label>
+                <input matInput type="tel" id="tel" name="tel" class="form-control" ngModel required>
+                <mat-icon matPrefix style="width: 1.5em;">contact_phone</mat-icon>
+              </mat-form-field>
+              <br/>
+              <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" id="password" name="password" class="form-control" ngModel required>
+                <mat-icon matPrefix style="width: 1.5em;">lock</mat-icon>
+              </mat-form-field>
+              <br/>
+              <mat-form-field>
+                <mat-label>Confirm Password</mat-label>
+                <input matInput type="password" id="conf-password" name="conf-password" class="form-control" ngModel required>
+                <mat-icon matPrefix style="width: 1.5em;">lock_open</mat-icon>
+              </mat-form-field>
+              <br/>
+              <button mat-raised-button color="primary" type="submit" class="login" [disabled]="!signForm.valid">Sign Up</button>
+              <button mat-raised-button color="accent" class="login" (click)="back()">Back</button>
+            </form>
+    </div>
+</div>    
+<router-outlet *ngIf="visible != reset || visible != forget"></router-outlet>

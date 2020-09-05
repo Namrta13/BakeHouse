@@ -1,0 +1,12 @@
+<div class="main">
+    <h1 class="heading-style">Grab A Bite...</h1>
+</div>
+<div *ngFor="let category of categoryList | slice:0:2; let i = index">
+<app-category-item [category]="category" [items]="categoryItem[i]" [index]="i"></app-category-item>
+</div>
+<div class="button-style"><button mat-raised-button (click)="viewAll()">View All</button></div>
+<div *ngIf="viewList">
+<div *ngFor="let category of categoryList | slice:2;">
+    <app-category-item [category]="category" [items]="categoryItem[categoryList.indexOf(category)]" [index]="categoryList.indexOf(category)"></app-category-item>
+</div>
+</div>

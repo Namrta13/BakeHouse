@@ -1,0 +1,40 @@
+.left {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    display: block;
+}
+.right {
+    width: 50%;
+    float: right;
+    padding: 20px;
+    display: block;
+}
+mat-form-field {
+    width: 80%;
+}
+.icon-container {
+    padding: 7px 0;
+    font-size: 24px;
+}
+.table-box {
+ display: block;
+ padding: 10px;
+}
+
+.amount-class {
+    margin: 20px;
+    display: block;
+    border: .5px;
+    border-style: groove;
+    background-color: yellowgreen;
+    width: 150px;
+    height: 80;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 2px;
+}
+.heading-style {
+    text-transform: uppercase;
+    color: darkblue;
+}

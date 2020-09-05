@@ -1,0 +1,19 @@
+<div class="card-style">
+    <mat-card class="inner-card" *ngFor="let item of cartList">
+        <mat-card-header>
+          <mat-card-title style="cursor: pointer">{{ item.name }}</mat-card-title> 
+        </mat-card-header>
+           <img mat-card-image src="{{ item.image }}" >
+            <mat-list>
+                <p mat-list-item style="margin: auto 0; margin-bottom: 20px;"><label>Quantity:</label><span *ngIf="!item.weights"class="quantity buttons_added">
+                    <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="{{item.quantity}}" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+                </span><span *ngIf="item.weights">{{item.quantity}}</span></p>
+                <p mat-list-item style="margin-bottom: 20px;"><label>Price:</label><span style="padding: 2px;">{{ item.cost | currency:"INR":"symbol" }}</span></p>
+                <button mat-stroked-button style="text-align: left;" (click)="removeFromCart(item.name)"><mat-icon>delete</mat-icon>Remove From Cart</button>
+            </mat-list>
+    </mat-card>
+    <div style="width: 200px; margin: 0 auto; font-size: 20px;" *ngIf="cartList.length">
+    <label>Amount:</label>{{ totalCost | currency:"INR":"symbol" }}
+    </div>
+    <button mat-raised-button routerLink="/checkout" style="width: 200px;" color="warn" *ngIf="cartList.length">Checkout</button>
+</div>  

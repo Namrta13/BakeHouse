@@ -1,0 +1,24 @@
+  <!--  <mat-card-content> -->
+    <div class="heading">
+          <h1 class="text-heading text-center">{{ name }}</h1>
+    </div>
+    <div class="card-style">
+        <div class="flip-card" *ngFor="let item of itemlist; let i = index">
+            <div class="flip-card-inner">  
+                <div class="flip-card-front">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>{{ item.name }}</mat-card-title>
+                        </mat-card-header>
+                        <img mat-card-image src="{{ item.image }}">
+                    </mat-card>
+                </div> 
+                <div class="flip-card-back">
+                    <div class="details">
+                        <p>{{ item.cost | currency:"INR":"symbol" }}</p>
+                        <button mat-raised-button (click)="getDetails(item.name)" style="cursor: pointer;">Go To Details</button>
+                    </div>
+                </div>
+            </div>  
+       </div>
+    </div>

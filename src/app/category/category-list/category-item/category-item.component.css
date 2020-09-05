@@ -1,0 +1,118 @@
+body {
+    box-sizing: border-box;
+}
+
+.outer-card {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    font-family: Georgia, 'Times New Roman', Times, serif;  
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    border-radius: 30px;
+    position: relative;
+    text-align: center;
+    background-image: url(../../../../assets/img/white-bg.jpg);
+    border-style: groove;
+    border-width: .5px;
+    border-color: gray;
+}
+.card-style {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 2);
+    width: 250px;
+    height: 250px;
+    margin-right: 50px;
+    margin-bottom: 30px;
+    border-radius: 390px;
+    position: relative;
+    text-align: center;
+}
+.mat-card-image{
+    opacity: 1;
+    width: 250px;
+    height: 250px;
+    border-radius: 390px;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+.text-style {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+.card-style:hover .mat-card-image{
+    opacity: 0.3;
+  }
+  
+.card-style:hover .text-style {
+    opacity: 1;
+}
+  
+.text-style > a:hover {
+    color: purple;
+    text-shadow: 2px 2px 4px blue;
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+.shift-right {
+    flex: 1 1 auto;
+}
+
+.card-title{
+    color: darkorchid;
+}
+
+.card-title:hover{
+    text-decoration: none;
+    color: purple;
+    text-shadow: 2px 2px 4px blue;
+    transform: scale(1.5);
+}
+
+.button-effect:link {
+    transition: all 1s;
+    position: relative;
+}
+.mat-mini-fab {
+    color: white;
+background-image: linear-gradient(to right bottom,  rgba(103,108,207,0.9948354341736695) 12%, rgba(255,0,198,0.8911939775910365) 94%);
+/* background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,0.7595413165266106) 0%, rgba(121,9,109,1) 35%, rgba(255,0,254,1) 100%); */
+}
+mat-icon {
+    transform: rotate(200deg);
+}
+.button-effect:hover {
+    transform: scale(0.7);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+.button-effect:active {
+    color: white;
+    background-image: linear-gradient(to right bottom,  rgba(103, 108, 207, 0.479), rgba(255, 0, 200, 0.74)) ;
+}
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      80% {
+          transform: translateX(10px);
+      }
+      100% {
+       opacity: 1;
+       transform: translate(0);
+      }
+}
+
+

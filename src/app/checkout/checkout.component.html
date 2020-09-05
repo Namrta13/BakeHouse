@@ -1,0 +1,89 @@
+<head>
+  <script src="https://kit.fontawesome.com/eb996577a1.js" crossorigin="anonymous"></script>
+</head>
+<div class="left">
+    <form  (ngSubmit)="onCheckout(checkoutForm)" #checkoutForm="ngForm">
+        <h4 class="heading-style">Billing Address</h4>
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" placeholder="First Name" id="firstname" name="firstname" class="form-control" ngModel>
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" placeholder="Last Name" id="lastname" name="lastname" class="form-control" ngModel>
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <mat-label>Email Address</mat-label>
+            <input matInput type="email" placeholder="example@abc.com" id="email" name="email" class="form-control" ngModel>
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <mat-label>Country</mat-label>
+            <mat-select>
+              <mat-option [value]="India">India</mat-option>
+              <mat-option [value]="US">US</mat-option>
+              <mat-option [value]="UK">UK</mat-option>
+              <mat-option [value]="Europe">Europe</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <mat-label>State</mat-label>
+            <input matInput type="text" placeholder="State" id="state" name="state" class="form-control" ngModel>
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <mat-label>ZIP/Postal Code</mat-label>
+            <input matInput type="number" placeholder="Zip" id="zip" name="zip" class="form-control" ngModel minlength="6">
+          </mat-form-field>
+          <br/>
+          <br/>
+          <h4 class="heading-style">Payment Details</h4>
+           <mat-label>Accepted Cards</mat-label>
+           <div class="icon-container">
+            <i class="fa fa-cc-visa" style="color:navy;"></i>
+            <i class="fa fa-cc-amex" style="color:blue;"></i>
+            <i class="fa fa-cc-mastercard" style="color:red;"></i>
+            <i class="fa fa-cc-discover" style="color:orange;"></i>
+          </div>
+          <br/>
+          <mat-form-field>
+            <mat-label>Name On Card</mat-label>
+            <input matInput type="text" id="noc" name="noc" class="form-control" ngModel>
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <mat-label>Credit Card Number</mat-label>
+            <input matInput type="text" placeholder="1111-2222-3333-4444" id="ccn" name="ccn" class="form-control" ngModel maxlength="18" minlength="18">
+          </mat-form-field>
+          <br/>
+          <mat-form-field style="width: 30%;">
+            <mat-label>Exp Month</mat-label>
+            <input matInput type="text" id="exm" name="exm" class="form-control" ngModel>
+          </mat-form-field>
+          <br/>
+          <mat-form-field style="width: 15%;">
+            <mat-label>Exp Year</mat-label>
+            <input matInput type="text" id="expy" name="expy" class="form-control" ngModel maxlength="4" minlength="4">
+          </mat-form-field>
+          <br/>
+          <mat-form-field style="width: 10%;">
+            <mat-label>CVV</mat-label>
+            <input matInput type="text" id="cvv" name="cvv" class="form-control" ngModel maxlength="3" minlength="3">
+          </mat-form-field>
+          <br/>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!checkoutForm.valid">Pay {{totalCost | currency:"INR":"symbol" }}</button>
+    </form>
+</div>
+<div class="right">
+     <h4 class="heading-style">Order Summary</h4>
+     <div class="table-box" *ngFor="let item of cartList">
+        <span style="margin-right: 60px;"><label>{{item.name}}</label></span> 
+        <span><label>{{item.cost | currency:"INR":"symbol"}}</label></span>
+     </div>
+     <div class="amount-class">
+     <label>Amount:  <span>{{totalCost | currency:"INR":"symbol"}}</span></label>
+     </div>
+</div>

@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+    <mat-icon>cake</mat-icon>
+    <h1 style="margin-left: 10px; font-size: 1em;">Bakery</h1>
+    <button mat-button routerLink="/category">Home</button>
+    <span class="example-fill-remaining-space"></span>
+    <button  mat-icon-button fxShow="true" fxHide.gt-sm [matMenuTriggerFor]="appMenu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div fxShow="true" fxHide.lt-md>
+       <button  mat-button routerLink="/login" (click)="onLogin()" *ngIf="!logout">Login</button>
+       <button  mat-button routerLink="/category" (click)="onLogout()" *ngIf="logout">Logout</button>
+       <button mat-icon-button *ngIf="logout" [matMenuTriggerFor]="profileMenu">
+         <mat-icon class="glyphicon glyphicon-user"></mat-icon>
+      </button>
+       <button mat-icon-button routerLink="/cart">
+          <mat-icon [matBadge]="count" matBadgePosition="above after" matBadgeColor="warn">shopping_cart</mat-icon>
+       </button>
+      </div>  
+</mat-toolbar>
+
+  <!-- <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <button  mat-list-item>Login</button>
+       <button  mat-list-item>Sign Up</button> 
+       <button  mat-list-item>Logout</button>
+       <button  routerLink="/cart" mat-list-item>
+          <mat-icon [matBadge]="count" matBadgePosition="above after" matBadgeColor="warn">shopping_cart</mat-icon>
+       </button>
+    </mat-nav-list>
+  </mat-sidenav> -->
+  <mat-menu #appMenu>
+  <button mat-menu-item routerLink="/login" (click)="onLogin()" *ngIf="!logout">Login</button>
+  <button mat-menu-item routerLink="/category" (click)="onLogout()" *ngIf="logout">Logout</button>
+  <button mat-menu-item routerLink="/category" *ngIf="logout" [matMenuTriggerFor]="profileMenu">User</button>
+  <button  routerLink="/cart" mat-menu-item>
+          <mat-icon [matBadge]="count" matBadgePosition="above after" matBadgeColor="warn">shopping_cart</mat-icon>
+       </button>
+</mat-menu>
+
+<mat-menu #profileMenu>
+   <button mat-menu-item routerLink="/login">Account</button>
+   <button mat-menu-item routerLink="/category">Orders</button>
+   <button  routerLink="/cart" mat-menu-item>WishList</button>
+ </mat-menu>
